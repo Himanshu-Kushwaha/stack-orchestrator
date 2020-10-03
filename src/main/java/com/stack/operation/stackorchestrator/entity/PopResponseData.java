@@ -10,27 +10,34 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Component
 public class PopResponseData {
     
-    private List<Integer> oldState;
-    private List<Integer> newState;
-    private Integer popedElement;
-    public List<Integer> getOldState() {
+    private List<String> oldState;
+    private List<String> newState;
+    private String popedElement;
+    private String datasource;
+    public List<String> getOldState() {
         return oldState;
     }
-    public void setOldState(List<Integer> oldState) {
+    public void setOldState(List<String> oldState) {
         this.oldState = oldState;
     }
-    public List<Integer> getNewState() {
+    public List<String> getNewState() {
         return newState;
     }
-    public void setNewState(List<Integer> newState) {
+    public void setNewState(List<String> newState) {
         this.newState = newState;
     }
-    public Integer getPopedElement() {
+    public String getPopedElement() {
         return popedElement;
     }
-    public void setPopedElement(Integer popedElement) {
+    public void setPopedElement(String popedElement) {
         this.popedElement = popedElement;
     }
-    
+    public String getDatasource() {
+        return datasource;
+    }
+    public void setDatasource(String datasource) {
+        this.datasource = datasource;
+    }
 }
+
 

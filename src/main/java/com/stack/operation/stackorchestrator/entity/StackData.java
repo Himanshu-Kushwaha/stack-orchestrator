@@ -7,11 +7,11 @@ public class StackData {
 
     private static final long serialVersionUID = 1L;
 
-    private Integer stackElements;
+    private String stackElements;
     
     private Long id;
     
-    private Integer pushData;
+    private String pushData;
     
     public Long getId() {
         return id;
@@ -23,22 +23,23 @@ public class StackData {
 
     
 
-    public Integer getStackElements() {
+    public String getStackElements() {
         return stackElements;
     }
 
-    public void setStackElements(Integer stackElements) {
+    public void setStackElements(String stackElements) {
         this.stackElements = stackElements;
     }
     
-    public Integer getPushData() {
+    public String getPushData() {
         return pushData;
     }
 
-    public void setPushData(Integer pushData) {
+    public void setPushData(String pushData) {
         this.pushData = pushData;
     }
 
     
 }
+
 

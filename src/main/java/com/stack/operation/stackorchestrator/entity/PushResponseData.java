@@ -10,16 +10,25 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Component
 public class PushResponseData {
     
-    private List<Integer> elements;
-
-    public List<Integer> getElements() {
+    private List<String> elements;
+    private String datasource;
+    
+    public List<String> getElements() {
         return elements;
     }
 
-    public void setElements(List<Integer> elements) {
+    public void setElements(List<String> elements) {
         this.elements = elements;
     }
     
+    public String getDatasource() {
+        return datasource;
+    }
+
+    public void setDatasource(String datasource) {
+        this.datasource = datasource;
+    }
 
 }
+
 
