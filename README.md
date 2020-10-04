@@ -6,6 +6,7 @@ To demonstrate microservice architecture stack push and pop operation is divided
  * <b>Stack-push:</b> Push the element in stack, stack element will be persisted in mysql or postgres db based on the path variable provided in URL
  * <b>Stack-pop:</b> Pop the last element inserted in db. DB name is provieded in URL path variable.
  * <b>Stack-orchestrator:</b> Interface for push and pop service. Client will interact with orchestrator endpoint only. Orchestrator will call push or pop service.
+ 
  Communication between micro-services are based on REST api calls.
  
  <b>Swagger Spec:</b> [swagger-spec.yaml](https://github.com/Himanshu-Kushwaha/stack-orchestrator/blob/main/swagger-spec.yaml)
