@@ -1,0 +1,178 @@
+openapi: 3.0.1
+info:
+  description: Stack Push and Pop Service
+  version: '1'
+  title: Stack Push and PoP service
+  contact:
+    name: 'Himanshu Kushwaha'
+    email: himanshukushwaha@outlook.com
+paths:
+  /{db}/push:
+    post:
+      tags:
+        - Push Stack element
+      summary: This path will save stack element to MySql database
+      parameters:
+        - name: db
+          in: path
+          description: DB for persistence either mysql or psql
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Push Data in stack detail
+        content:
+          application/JSON:
+            schema: 
+              $ref: '#/components/schemas/pushElement'
+        required: true
+      responses:
+        '200':
+          description: Operation Successfull
+          content:
+            application/JSON:
+              schema:
+                $ref: '#/components/schemas/pushSuccessResponse'
+        '404':
+          description: Path Not Found
+          content:
+            application/JSON:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse404'
+        '500':
+          description: Internal Server Error
+          content:
+            application/JSON:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse500'
+  
+  /{db}/pop:
+    get:
+      tags:
+        - Pop Element from database
+      summary: getInfo
+      parameters:
+        - name: db
+          in: path
+          description: DB to POP element either from mysql or psql
+          required: true
+          schema:
+            type: string
+      operationId: getInfoUsingGET
+      responses:
+        '200':
+          description: Response received successful
+          content:
+            application/JSON:
+              schema:
+                $ref: '#/components/schemas/popResponse'
+        '404':
+          description: Path Not found
+          content:
+            application/JSON:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse404'
+        '500':
+          description: Internal Server Error
+          content:
+            application/JSON:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse500'
+      
+components:           
+  schemas:
+    pushElement:
+      type: object
+      required:
+      - pushData
+      properties:
+        pushData:
+          type: string
+          description: Provide the element which we want to push to the stack.
+          example: '123'
+    pushSuccessResponse:
+      title: Success Response
+      required:
+        - elements
+        - datasource
+      type: object
+      properties:
+        datasource:
+          description: Database name in which stack element is persisted
+          title: The datasource schema
+          type: string
+        elements:
+          description: Stack element stored in given database
+          items:
+              type: string
+          title: The elements schema
+          type: array
+    ErrorResponse404:
+      title: Path Not found
+      type: object
+      properties:
+        timestamp:
+          type: string
+          example: '2020-10-04T08:31:49.702+00:00'
+        status:
+          type: integer
+          example: 404
+        error:
+          type: string
+          example: 'Not Found'
+          description: Error message
+        path:
+          type: string
+          description: path
+    ErrorResponse500:
+      title: Internal Server Error
+      type: object
+      properties:
+        timestamp:
+          type: string
+          example: '2020-10-04T08:31:49.702+00:00'
+        status:
+          type: integer
+          example: 500
+        error:
+          type: string
+          example: 'Application not responding'
+          description: Error message
+        path:
+          type: string
+          description: path
+    popResponse:
+      type: object
+      example:
+          datasource: mysql
+          newState:
+          - '1'
+          oldState:
+          - '1'
+          - '123'
+          popedElement: '123'
+      description: Pop API response schema
+      properties:
+        datasource:
+          description: Database from where element is poped
+          example: mysql
+          title: The datasource schema
+          type: string
+        newState: 
+          description: New state of stack element
+          example: 
+            - 1
+            - 23
+          title: New state of stack element
+          type: string
+        oldState: 
+          description: Old state of stack element
+          example: 
+            - 1
+            - 23
+            - 24
+          title: Old state of stack element
+          type: string
+      
+      
+        
