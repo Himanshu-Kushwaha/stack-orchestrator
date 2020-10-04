@@ -24,7 +24,7 @@ public class OrchestratorController {
     Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @RequestMapping(value = "/{datasource}/pop", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public @ResponseBody ResponseEntity pushElement(@PathVariable String datasource) {
+    public @ResponseBody ResponseEntity popElement(@PathVariable String datasource) {
         try {
             logger.info("Orchestrator() pop data from :: {}", datasource);
             return new ResponseEntity<>(downstreamCall.popCall(datasource).getBody(), HttpStatus.OK);
