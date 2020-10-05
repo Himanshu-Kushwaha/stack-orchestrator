@@ -10,6 +10,7 @@ To demonstrate microservice architecture stack push and pop operation is divided
  Communication between micro-services are based on REST api calls.
  
  <b>Swagger Spec:</b> [swagger-spec.yaml](https://github.com/Himanshu-Kushwaha/stack-orchestrator/blob/main/swagger-spec.yaml)
+ 
  <b>Docker Compose Test:</b> [docker-compose-test.yaml](https://github.com/Himanshu-Kushwaha/stack-orchestrator/blob/main/docker-compose-test.yaml)
  
  <b>CI: Github Action</b> is used to build the service and run the test cases. 
