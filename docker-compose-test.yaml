@@ -1,0 +1,47 @@
+version: '3.3'
+services:
+  mysql:
+    container_name: mysql-container
+    restart: always
+    image: mysql:5.7.31
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    environment:
+      MYSQL_ROOT_PASSWORD: 'root'
+      MYSQL_DATABASE: 'mydb'
+    ports:
+      - "3306:3306"
+  postgres:
+    image: postgres:13-alpine
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: root
+      POSTGRES_USER: postgres
+      POSTGRES_DB: mydb
+  push:
+    image: himanshu007/stack-push:test
+    restart: always
+    ports:
+      - "8077:8077"
+  pop:
+    image: himanshu007/stack-pop:test
+    restart: always
+    ports:
+      - "8078:8078"
+  orchestrator:
+    build: .
+    image: orchestrator:test
+    ports:
+      - 8080:8080
+  test:
+    depends_on:
+      - mysql
+      - postgres
+      - push
+      - pop
+      - orchestrator
+    image: hostyrnedo/alpine-curl
+    command: >
+      sh -c "curl -i -X POST -H "Content-Type: application/json" -d "{\"pushData\":\"129\"}" http://push:8077/mysql/push &&
+             curl http://pop:8078/mysql/pop"
