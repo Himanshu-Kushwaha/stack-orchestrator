@@ -10,6 +10,7 @@ To demonstrate microservice architecture stack push and pop operation is divided
  Communication between micro-services are based on REST api calls.
  
  <b>Swagger Spec:</b> [swagger-spec.yaml](https://github.com/Himanshu-Kushwaha/stack-orchestrator/blob/main/swagger-spec.yaml)
+ <b>Docker Compose Test:</b> [docker-compose-test.yaml](https://github.com/Himanshu-Kushwaha/stack-orchestrator/blob/main/docker-compose-test.yaml)
  
  <b>CI: Github Action</b> is used to build the service and run the test cases. 
  A multistage Dockerfile created to build each service and then create a docker image. Docker images are pushed to docker hub registry [himanshu007](https://hub.docker.com/repositories/himanshu007). To deploy the services along with Databases [these template](https://github.com/Himanshu-Kushwaha/stack-pop/tree/main/deployment) files are used.
