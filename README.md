@@ -25,3 +25,8 @@ To demonstrate microservice architecture stack push and pop operation is divided
 | Stack-orchestrator  | [stack-orchestrator](https://github.com/Himanshu-Kushwaha/stack-orchestrator)  | [himanshu007/orchestrator](https://hub.docker.com/repository/docker/himanshu007/orchestrator)  |  himanshu007/orchestrator:main |  [orchestrator-deployment.yaml](https://github.com/Himanshu-Kushwaha/stack-pop/blob/main/deployment/orchestrator-deployment.yaml) |
 |  Mysql |   |   |  mysql:5.7 | [mysql-deployment.yaml](https://github.com/Himanshu-Kushwaha/stack-pop/blob/main/deployment/mysql-deployment.yaml)  |
 |  Postgres |   |   |  postgres:13-alpine | [postgres-deployment.yaml](https://github.com/Himanshu-Kushwaha/stack-pop/blob/main/deployment/postgres-deployment.yaml)  |
+
+
+## Further Improvements:
+* For datastore using cluster IPs instead of Loadbalancer
+* Docker-compose testing can be improvised
